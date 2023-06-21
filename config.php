@@ -1,6 +1,6 @@
+<?php
 //*estas clases para conectarnos a la base de datos con el paradigma OOP*//
 //* 
-<?php
 /*se utiliza la sentencia require para traer las constantes del archivo externo*/
 require_once('db.php');
 /*aqui se declaran cada uno de los atributos de la clase*/
@@ -76,6 +76,17 @@ class Config{
                 return $e -> getMessage();
             }
 
+    }
+//este metodo recupera todos los registros de la tabla
+    //obtainAll es para buscar todos los registros
+    public function obtainAll(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM campers"); //se declara una variable
+            $stm -> execute (); //execute para ejectuar la setencia que es el arg del prepare
+            return $stm -> fetchAll();//este metodo retorna todos los registros de la tabla
+        } catch (\Exception $e) { //aqui se captura el error o la excepcion de la tabla
+            return $e -> getMessage();
+        }
     }
     
 }

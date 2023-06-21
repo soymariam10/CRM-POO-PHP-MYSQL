@@ -1,10 +1,12 @@
 <?php 
-
-require_once("config.php");
-
+//llamamos la clase para mostarr los datos
+require_once("config.php");//el argumento es donde esta el archivo donde se obitene los registros de la bd
+//ahora vamos a instanciarla de tipo config
+//el new va al constructor e inicializa, new es la palabra reservada para instanciar la clase
 $data = new Config();
-
-$all = $data -> selectAll();
+//invocamos al metodo que devuelve todos los registros en este caso lo llamamos obtainall
+//en la variable all toda el array asociativo para imprimir fila por fila
+$all = $data -> obtainAll();
 
 ?>
 
@@ -72,31 +74,29 @@ $all = $data -> selectAll();
             </tr>
           </thead>
           <tbody class="" id="tabla">
-
-            <!-- ///////Llenado DInamico desde la Base de Datos -->
-         
+<!-- llenado dinamico desde la base de datos -->
             <?php 
-            
-              foreach ($all as $key => $val) {
-            
+            //este se utiliza para iterar la base de datos
+              foreach($all as $key => $val) {
             ?>
 
-            <tr>
-              <td> <?php echo $val['id']?> </td>
-              <td> <?php echo $val['NOMBRES']?> </td>
+            <tr> <!-- fila -->
+              <td> <?php echo $val['id']?> </td> <!--se hace el tag e apertura y cierre por que contiene codigo php -->
+              <td> <?php echo $val['nombres']?> </td>
               <td> <?php echo $val['direccion']?> </td>
               <td> <?php echo $val['logros']?> </td>
               <td> <?php echo $val['ingles']?> </td>
               <td> <?php echo $val['ser']?> </td>
               <td> <?php echo $val['review']?> </td>
               <td> <?php echo $val['skills']?> </td>
-              
-              <td><a class ="btn btn-danger" href="borrarEstudiantes.php?id=<?= $val['id']?> &req=delete ">Borrar</a></td>
+              <!-- botones -->                                  <!--este ? se utiliza para adicionar a la URL un parametro, en este caso ID--> 
+              <td><a class ="btn btn-danger" href="borrarEstudiantes.php?id=<?= $val['id']?> &req=delete ">Borrar</a></td> <!-- se pone php de apertura y de cierre  -->
               <td><a class ="btn btn-warning" href="actualizarEstudiantes.php?id=<?= $val['id']?>">Editar</a></td>
 
             </tr>
 
-            <?php } ?>
+            <?php }
+            ?>
           </tbody>
             
         </table>
@@ -109,7 +109,7 @@ $all = $data -> selectAll();
     <div class="parte-derecho " id="detalles">
       <h3>Detalle Estudiantes</h3>
       <p>Cargando...</p>
-       <!-- ///////Generando la grafica -->
+       <!-- ///////Generando la grafica -
 
     </div>
 
