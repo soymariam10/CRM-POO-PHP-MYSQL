@@ -112,6 +112,18 @@ class Config{
             return $e->getMenssage();
         }
     }
+    //este es el metodo que va a actualizar los cambios que haga el usuario
+    public function update(){
+        try {//aqui se utiliza la sentencia UPDATE que pertenece al lenguaje DML DE SQL, especificamos los nombres de las tablas, set establece los cambios de los valores y el ? es el que recibe el parametro
+            $stm = $this-> dbCnx -> prepare("UPDATE campers SET NOMBRES =?, direccionn =?, logros=? WHERE id=?");//donde id sea = al ? =>para eso se utiliza el id
+            //estos son los atributos de la clase
+
+            //dentro de este array van todos los parametros, las clases
+            $stm -> execute([$this->nombres, $this->direccion, $this->logros, $this->id]);
+        } catch (\Exception $e) {
+            return $e->getMenssage();
+        }
+    }
 }
 
 ?>

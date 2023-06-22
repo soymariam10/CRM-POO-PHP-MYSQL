@@ -1,5 +1,5 @@
 <?php 
-
+//primer paso recurperar detale de registro 
     ini_set("display_errors" , 1);
     ini_set("display_startup_errors" , 1);
 
@@ -31,8 +31,8 @@
     echo "<br>";
     print_r($val); //se utiliza para mostrar el array que posee los element
 
-    
-    if (isset($_POST["editar"])) {
+//segundo paso para el update: actualizar
+     if (isset($_POST["editar"])) {
         $data -> setNombres($_POST['nombres']);
         $data -> setDireccion($_POST['direccion']);
         $data -> setLogros($_POST['logros']);
@@ -107,7 +107,7 @@
                     class="form-control"  
                     value="<?php echo $val ['NOMBRES'];?>"
                     />
-                    <!-- es el atributo que contiene los datos que necesito en caso de actualizar-->
+                    <!-- value es el atributo que contiene los datos que necesito en caso de actualizar-->
                     
                 </div>
 
@@ -119,7 +119,6 @@
                     name="direccion"
                     class="form-control"  
                     value="<?php echo $val ['direccion']; ?>"
-                    
                     />
                 </div>
 
