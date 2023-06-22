@@ -11,14 +11,7 @@ if(isset($_GET['id']) && isset($_GET['req'])) {
         $record -> setId($_GET['id']);
         $record -> delete();
         echo"<script>alert('Dato borrado satisfactoriamente');document.location='estudiantes.php'</script>";
+        }   
     }
-    public function delete({
-        try {
-            //code...
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-    })
-}
 
 ?>

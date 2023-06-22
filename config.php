@@ -88,7 +88,30 @@ class Config{
             return $e -> getMessage();
         }
     }
-    
+    //borrarregistro de una base de datos
+    public function delete(){
+        try {
+            //se prrepara la sentencia
+            $stm = $this->dbCnx->prepare("DELETE FROM * campers WHERE id=?");
+            //ahora se ejecuta
+            $stm -> execute ([$this->id]);
+            //ahora retorna a todos menos al id que fue eliminado
+            return $stm-> fetchAll();
+            //se redirecciona a la bd y muestra todas las filas menos a la eliminada
+            echo"<script>alert('Registro Eliminado');document.location='estudiantes.php'</script>";
+        } catch (\Exception $e) {
+            return $e->getMenssage();
+        }
+    }
+    public function selectOne(){
+        try {
+            $stm = $this->dbCnx->prepare("SELECT * FROM campers WHERE id=?");
+            $stm -> execute([$this->id]);
+            return $stm -> fetchAll();
+        } catch (\Exception $e) {
+            return $e->getMenssage();
+        }
+    }
 }
 
 ?>
