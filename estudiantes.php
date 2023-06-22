@@ -1,12 +1,3 @@
-<?php 
-//llamamos la clase para mostarr los datos
-require_once("config.php");//el argumento es donde esta el archivo donde se obitene los registros de la bd
-//ahora vamos a instanciarla de tipo config
-//el new va al constructor e inicializa, new es la palabra reservada para instanciar la clase
-$data = new Config();
-//invocamos al metodo que devuelve todos los registros en este caso lo llamamos obtainall
-//en la variable all toda el array asociativo para imprimir fila por fila
-$all = $data -> obtainAll();
 
 ?>
 
